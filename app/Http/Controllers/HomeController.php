@@ -14,6 +14,6 @@ class HomeController extends Controller
             'jabatan' => 'IT Infrastructure & Frontend Developer',
         ];
         // Melempar data tersebut ke file welcome.blade.php
-        return view('home', $data);
+        return view('welcome', $data);
     }
 }
