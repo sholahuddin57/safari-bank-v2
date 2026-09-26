@@ -9,3 +9,5 @@ Route::get('/', [HomeController::class, 'index']); //tambahan ini untuk memanggi
 Route::post('/Pengajuan Baru', [HomeController::class, 'store']);//tambahan ini untuk memanggil method store pada HomeController
 // Rute untuk halaman admin
 Route::get('/admin', [HomeController::class, 'admin']);
+// Rute untuk menghapus pengajuan
+Route::delete('/pengajuan/{id}', [HomeController::class, 'destroy']);

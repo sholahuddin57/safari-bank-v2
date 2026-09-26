@@ -15,12 +15,18 @@
         <div class="card shadow-sm border-0">
             <div class="card-body">
                 <table class="table table-hover">
+                    @if (session('sukses'))
+                        <div class="alert alert-success text-center">
+                            {{ session('sukses') }}
+                        </div>
+                    @endif
                     <thead class="table-success">
                         <tr>
                             <th>ID</th>
                             <th>Nama Produk</th>
                             <th>Status</th>
                             <th>Waktu Pengajuan</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,6 +39,13 @@
                                 <span class="badge bg-warning text-dark">{{ $item->status }}</span>
                             </td>
                             <td>{{ $item->created_at }}</td>
+                            <td>
+                                <form action="/pengajuan/{{ $item->id }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengajuan ini?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

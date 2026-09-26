@@ -38,6 +38,18 @@ class HomeController extends Controller
         // Melempar data pengajuan ke file admin.blade.php
         return view('admin', ['pengajuans' => $data_pengajuan]);
     }
+
+    //fungsi untuk menghapus pengajuan
+    public function destroy($id) {
+        // Mencari pengajuan berdasarkan ID
+        $pengajuan = Pengajuan::findOrFail($id);
+
+        // Menghapus pengajuan dari database
+        $pengajuan->delete();
+
+        // Redirect kembali ke halaman admin dengan pesan sukses
+        return redirect('/admin')->with('sukses', 'Data Pengajuan berhasil dihapus dari sistem.');
+    }
 }
 
 
