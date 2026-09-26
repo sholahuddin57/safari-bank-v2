@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('pengajuans', function (Blueprint $table) {
             $table->id();
+
+            $table->string('nama_produk');
+            $table->string('status') ->default('menunggu'); // Menambahkan kolom status dengan default 'menunggu'
             $table->timestamps();
         });
     }
