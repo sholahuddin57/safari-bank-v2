@@ -11,3 +11,5 @@ Route::post('/Pengajuan Baru', [HomeController::class, 'store']);//tambahan ini 
 Route::get('/admin', [HomeController::class, 'admin']);
 // Rute untuk menghapus pengajuan
 Route::delete('/pengajuan/{id}', [HomeController::class, 'destroy']);
+// Rute untuk memperbarui status pengajuan
+Route::patch('/pengajuan/{id}/setujui', [HomeController::class, 'setujui']);

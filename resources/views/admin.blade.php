@@ -39,12 +39,23 @@
                                 <span class="badge bg-warning text-dark">{{ $item->status }}</span>
                             </td>
                             <td>{{ $item->created_at }}</td>
+
                             <td>
+                                <div class="d-flex gap-2">
+
+                                    <form action="/pengajuan/{{ $item->id }}/setujui" method="POST">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="btn btn-success btn-sm">Setujui</button>
+                                    </form>
+                               
                                 <form action="/pengajuan/{{ $item->id }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengajuan ini?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                                 </form>
+
+                                 </div>
                             </td>
                         </tr>
                         @endforeach

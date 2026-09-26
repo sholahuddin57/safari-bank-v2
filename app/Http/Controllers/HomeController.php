@@ -50,6 +50,19 @@ class HomeController extends Controller
         // Redirect kembali ke halaman admin dengan pesan sukses
         return redirect('/admin')->with('sukses', 'Data Pengajuan berhasil dihapus dari sistem.');
     }
+
+    //fungsi untuk memperbarui status pengajuan
+    public function setujui($id) {
+        // Mencari pengajuan berdasarkan ID
+        $pengajuan = Pengajuan::findOrFail($id);
+
+        // Memperbarui status pengajuan menjadi "Disetujui"
+        $pengajuan->status = 'Disetujui';
+        $pengajuan->save();
+
+        // Redirect kembali ke halaman admin dengan pesan sukses
+        return redirect('/admin')->with('sukses', 'Status pengajuan berhasil diperbarui menjadi Disetujui.');
+    }
 }
 
 
