@@ -29,6 +29,15 @@ class HomeController extends Controller
         // Redirect kembali ke halaman utama dengan pesan sukses
         return redirect('/')->with('sukses', 'Selamat! Pengajuan anda telah berhasil dikirim. Silakan tunggu konfirmasi dari kami.');
     }
+    //fungsi untuk menampilkan halaman admin
+    public function admin()
+    {
+        // Mengambil semua data pengajuan dari database
+        $data_pengajuan = Pengajuan::all() ;// Mengambil data pengajuan terbaru
+
+        // Melempar data pengajuan ke file admin.blade.php
+        return view('admin', ['pengajuans' => $data_pengajuan]);
+    }
 }
 
 
