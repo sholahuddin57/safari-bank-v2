@@ -14,5 +14,8 @@ Route::get('/admin', [HomeController::class, 'admin']);
 Route::delete('/pengajuan/{id}', [HomeController::class, 'destroy']);
 // Rute untuk memperbarui status pengajuan
 Route::patch('/pengajuan/{id}/setujui', [HomeController::class, 'setujui']);
+
+
 //Rute Get untuk halaman login
 Route::get('/login', [AuthController::class, 'index'])->name('login'); //tambahan ini untuk memanggil method index pada AuthController
+Route::post('/login', [AuthController::class, 'authenticate']); //tambahan ini untuk memanggil method authenticate pada AuthController

@@ -10,7 +10,12 @@
     <div class="card shadow-sm border-0" style="width: 400px;">
         <div class="card-body p-5">
             <h3 class="text-success fw-bold text-center mb-4">Safari Bank V2</h3>
-            
+            @error('email')
+                <div class="alert alert-danger text-center small p-2 mb-3">
+                    {{ $message }}
+                </div>
+            @enderror
+
             <form action="/login" method="POST">
                 @csrf
                 <div class="mb-3">
