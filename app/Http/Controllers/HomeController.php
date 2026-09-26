@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pengajuan; // wajib menambahkan ini agar bisa menggunakan model Pengajuan
 
+
 class HomeController extends Controller
 {
     public function index()
@@ -56,12 +57,12 @@ class HomeController extends Controller
         // Mencari pengajuan berdasarkan ID
         $pengajuan = Pengajuan::findOrFail($id);
 
-        // Memperbarui status pengajuan menjadi "Disetujui"
-        $pengajuan->status = 'Disetujui';
+        // Memperbarui status pengajuan menjadi "disetujui"
+        $pengajuan->status = 'disetujui';
         $pengajuan->save();
 
         // Redirect kembali ke halaman admin dengan pesan sukses
-        return redirect('/admin')->with('sukses', 'Status pengajuan berhasil diperbarui menjadi Disetujui.');
+        return redirect('/admin')->with('sukses', 'Status pengajuan berhasil diperbarui menjadi disetujui.');
     }
 }
 

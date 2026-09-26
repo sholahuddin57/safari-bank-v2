@@ -15,11 +15,6 @@
         <div class="card shadow-sm border-0">
             <div class="card-body">
                 <table class="table table-hover">
-                    @if (session('sukses'))
-                        <div class="alert alert-success text-center">
-                            {{ session('sukses') }}
-                        </div>
-                    @endif
                     <thead class="table-success">
                         <tr>
                             <th>ID</th>
@@ -36,24 +31,30 @@
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->nama_produk }}</td>
                             <td>
-                                <span class="badge bg-warning text-dark">{{ $item->status }}</span>
+                                 @if (strtolower($item->status) === 'disetujui')
+                                <span class="badge bg-success text-white">{{ $item->status }}</span>
+                                @else
+                                 <span class="badge bg-warning text-dark">{{ $item->status }}</span>
+                                @endif
                             </td>
                             <td>{{ $item->created_at }}</td>
 
                             <td>
                                 <div class="d-flex gap-2">
 
+                                    @if (strtolower($item->status) !== 'disetujui')
                                     <form action="/pengajuan/{{ $item->id }}/setujui" method="POST">
                                         @csrf
                                         @method('PATCH')
                                         <button type="submit" class="btn btn-success btn-sm">Setujui</button>
                                     </form>
+                                    @endif
                                
-                                <form action="/pengajuan/{{ $item->id }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengajuan ini?');">
+                                    <form action="/pengajuan/{{ $item->id }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengajuan ini?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                                </form>
+                                     </form>
 
                                  </div>
                             </td>
