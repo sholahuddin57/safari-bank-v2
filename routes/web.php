@@ -24,4 +24,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin', [HomeController::class, 'admin']);
     Route::delete('/pengajuan/{id}', [HomeController::class, 'destroy']);
     Route::patch('/pengajuan/{id}/setujui', [HomeController::class, 'setujui']);
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
